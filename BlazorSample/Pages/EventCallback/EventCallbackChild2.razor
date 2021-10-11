@@ -1,0 +1,19 @@
+﻿@*一度イベントを受け取ってから返すパターン*@
+<p>
+    <button class="btn btn-secondary" @onclick="OnButtonClicked">
+        ボタン２
+    </button>
+</p>
+
+@code {
+
+    [Parameter]
+    public EventCallback<int> OnClickCallback { get; set; }
+
+    private async Task OnButtonClicked()
+    {
+        var r = new Random();
+        await OnClickCallback.InvokeAsync(r.Next(0, 9));
+    }
+
+}

@@ -1,0 +1,12 @@
+﻿@*イベントをそのまま返すパターン*@
+<p>
+    <button class="btn btn-primary" @onclick="OnClickCallback">
+        ボタン１
+    </button>
+</p>
+
+@code {
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+}

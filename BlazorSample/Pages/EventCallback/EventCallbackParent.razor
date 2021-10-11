@@ -1,0 +1,23 @@
+﻿@page "/eventcallback-parent"
+
+<h1>EventCallbackサンプル</h1>
+
+<EventCallbackChild1 OnClickCallback="@ShowMessage1" />
+<EventCallbackChild2 OnClickCallback="@ShowMessage2" />
+<EventCallbackChild3 OnClickCallback=@((num) => message = $"ボタン３が押されました！ 返り値：{num}") />
+
+<p>@message</p>
+
+@code {
+    private string message;
+
+    private void ShowMessage1(MouseEventArgs e)
+    {
+        message = "ボタン１が押されました！";
+    }
+
+    private void ShowMessage2(int num)
+    {
+        message = $"ボタン２が押されました！ 返り値：{num}";
+    }
+}

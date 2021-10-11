@@ -1,0 +1,12 @@
+﻿@*イベント処理をラムダ式で書くパターン*@
+<p>
+    <button class="btn btn-success" @onclick=@(async () => await OnClickCallback.InvokeAsync(10))>
+        ボタン３
+    </button>
+</p>
+
+@code {
+
+    [Parameter]
+    public EventCallback<int> OnClickCallback { get; set; }
+}
