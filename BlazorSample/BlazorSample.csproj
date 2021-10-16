@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Pages\EventCallback\" />
+    <None Remove="Sample\" />
+    <None Remove="Sample\BlazorConponent\" />
+    <None Remove="Sample\EventCallback\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\EventCallback\" />
+    <Folder Include="Sample\" />
+    <Folder Include="Sample\BlazorConponent\" />
+    <Folder Include="Sample\EventCallback\" />
   </ItemGroup>
 </Project>

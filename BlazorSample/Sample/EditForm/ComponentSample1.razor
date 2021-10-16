@@ -1,0 +1,110 @@
+﻿@page "/edit-form1"
+
+<h1>EditFormサンプル（エラーをまとめて表示）</h1>
+
+<EditForm Model="model" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>名前</label>
+                <InputText class="form-control" @bind-Value="@model.Name" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label>誕生日</label>
+                <InputDate class="form-control" @bind-Value="@model.Birthday"></InputDate>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <dxiv class="form-group">
+                <label>年齢</label>
+                <InputNumber class="form-control" @bind-Value="@model.Age"></InputNumber>
+            </dxiv>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label>性別</label>
+                @foreach (GenderType value in Enum.GetValues(typeof(GenderType)))
+                {
+                    value.GetDisplayName();
+                }
+                <InputRadioGroup class="form-control" @bind-Value="@model.Gender">
+                    @foreach (GenderType value in Enum.GetValues(typeof(GenderType)))
+                    {
+                        <br />
+                        <InputRadio Value="@value"></InputRadio>@value.GetDisplayName();
+                    }
+                </InputRadioGroup>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>プロフィール</label>
+                <InputTextArea class="form-control" @bind-Value="@model.Profile"></InputTextArea>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label>都道府県</label>
+                <InputSelect class="form-control" @bind-Value="@model.Prefecture">
+                    @foreach (Prefecture value in Enum.GetValues(typeof(Prefecture)))
+                    {
+                        <option value="@value">@value.GetDisplayName()</option>
+                    }
+                </InputSelect>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label>画像</label>
+                <InputFile class="form-control" OnChange="LoadFile" multiple></InputFile>
+                <span>ファイル数：@fileCount</span>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">登録</button>
+</EditForm>
+
+<p style="margin-top: 20px;">
+    @resultMessage
+    @if (isSuccess)
+    {
+        <ul>
+            <li>名前：@model.Name</li>
+            <li>誕生日：@model.Birthday.ToString("yyyy/MM/dd")</li>
+            <li>年齢：@model.Age</li>
+            <li>性別：@model.Gender.GetDisplayName()</li>
+            <li>プロフィール：@model.Profile</li>
+            <li>都道府県：@model.Prefecture.GetDisplayName()</li>
+        </ul>
+    }
+</p>
+
+@code {
+
+    private FormModel model = new FormModel();
+    private int fileCount;
+    private string resultMessage;
+    private bool isSuccess = false;
+
+    private void LoadFile(InputFileChangeEventArgs e)
+    {
+        fileCount = e.FileCount;
+    }
+
+    private void OnValidSubmit()
+    {
+        isSuccess = true;
+        resultMessage = "登録完了!!";
+    }
+
+}
+
+
