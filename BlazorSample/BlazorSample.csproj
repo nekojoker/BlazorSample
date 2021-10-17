@@ -8,10 +8,12 @@
     <None Remove="Sample\" />
     <None Remove="Sample\BlazorConponent\" />
     <None Remove="Sample\EventCallback\" />
+    <None Remove="Sample\LifeCycle\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sample\" />
     <Folder Include="Sample\EditForm\" />
     <Folder Include="Sample\EventCallback\" />
+    <Folder Include="Sample\LifeCycle\" />
   </ItemGroup>
 </Project>

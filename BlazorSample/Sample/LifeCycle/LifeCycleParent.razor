@@ -1,0 +1,95 @@
+﻿@page "/life-cycle-parent/{Param?}"
+@inject NavigationManager NavigationManager
+
+<h1>ライフサイクルサンプル</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-secondary" @onclick="StateHasChangedClicked">StateHasChanged</button>
+<button class="btn btn-success" @onclick="@(() => NavigationManager.NavigateTo("/life-cycle-parent/10"))">With Param Reload</button>
+<br />
+
+@foreach (var item in eventList)
+{
+    <span>@item</span>
+    <br />
+}
+<LifeCycleChild Count="currentCount"></LifeCycleChild>
+
+@code {
+    [Parameter]
+    public string Param { get; set; }
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    List<string> eventList = new List<string>();
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        if (parameters.TryGetValue<string>(nameof(Param), out var value))
+        {
+            if (value == null)
+            {
+                eventList.Add("SetParametersAsync");
+            }
+            else
+            {
+                eventList.Add($"SetParametersAsync - with parameter : {value}");
+            }
+        }
+
+        return base.SetParametersAsync(parameters);
+    }
+
+    protected override void OnInitialized()
+    {
+        eventList.Add("OnInitialized");
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        eventList.Add("OnInitializedAsync");
+        return base.OnInitializedAsync();
+    }
+
+    protected override void OnParametersSet()
+    {
+        eventList.Add("OnParametersSet");
+        base.OnParametersSet();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        eventList.Add("OnParametersSetAsync");
+        return base.OnParametersSetAsync();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        eventList.Add("OnAfterRender");
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        eventList.Add("OnAfterRenderAsync");
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override bool ShouldRender()
+    {
+        eventList.Add("ShouldRender");
+        return base.ShouldRender();
+    }
+
+    private void StateHasChangedClicked()
+    {
+        StateHasChanged();
+    }
+
+}

@@ -1,0 +1,64 @@
+﻿<h3>Child Component</h3>
+
+<p> - Child - Current count: @Count</p>
+
+@foreach (var item in eventList)
+{
+    <span>@item</span>
+    <br />
+}
+
+@code {
+    [Parameter] public int Count { get; set; }
+
+    List<string> eventList = new List<string>();
+
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        eventList.Add(" - Child - SetParametersAsync");
+        if (parameters.TryGetValue<int>(nameof(Count), out var value))
+        {
+        }
+        return base.SetParametersAsync(parameters);
+    }
+
+    protected override void OnInitialized()
+    {
+        eventList.Add(" - Child - OnInitialized");
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        eventList.Add(" - Child - OnInitializedAsync");
+        return base.OnInitializedAsync();
+    }
+
+    protected override void OnParametersSet()
+    {
+        eventList.Add(" - Child - OnParametersSet");
+        base.OnParametersSet();
+    }
+
+    protected override Task OnParametersSetAsync()
+    {
+        eventList.Add(" - Child - OnParametersSetAsync");
+        return base.OnParametersSetAsync();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        eventList.Add(" - Child - OnAfterRender");
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        eventList.Add(" - Child - OnAfterRenderAsync");
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override bool ShouldRender()
+    {
+        eventList.Add(" - Child - ShouldRender");
+        return base.ShouldRender();
+    }
+}
