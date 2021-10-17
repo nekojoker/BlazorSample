@@ -1,0 +1,39 @@
+﻿@page "/edit-form4"
+
+<h1>EditFormサンプル（同じ値の入力チェック）</h1>
+
+<EditForm Model="@model" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label>パスワード</label>
+                <InputText type="password" class="form-control" @bind-Value="@model.Password" />
+            </div>
+            <div class="form-group">
+                <label>確認用パスワード</label>
+                <InputText type="password" class="form-control" @bind-Value="@model.ConfirmPassword" />
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">登録</button>
+</EditForm>
+
+<p style="margin-top: 20px;">
+    @resultMessage
+</p>
+
+@code {
+
+    private PasswordModel model = new PasswordModel();
+    private string resultMessage;
+
+    private void OnValidSubmit()
+    {
+        resultMessage = "登録完了!!";
+    }
+
+}
+
+
