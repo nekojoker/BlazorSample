@@ -11,6 +11,7 @@
     <None Remove="Sample\LifeCycle\" />
     <None Remove="Sample\Attributed\" />
     <None Remove="Sample\Cascading\" />
+    <None Remove="Sample\Render\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sample\" />
@@ -19,5 +20,6 @@
     <Folder Include="Sample\LifeCycle\" />
     <Folder Include="Sample\AttributeSplatting\" />
     <Folder Include="Sample\Cascading\" />
+    <Folder Include="Sample\RenderFragment\" />
   </ItemGroup>
 </Project>
