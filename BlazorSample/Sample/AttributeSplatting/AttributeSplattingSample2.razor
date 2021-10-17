@@ -1,0 +1,24 @@
+﻿@page "/splat2"
+
+<h1>属性スプラッティングサンプル（任意のパラメータ）</h1>
+
+<input id="useIndividualParams"
+       maxlength="5"
+       placeholder="ここに入力してください..."
+       size="50" />
+
+<input id="useAttributesDict"
+       @attributes="Attributes" />
+
+<AttributesSplattingChild src="https://www.gravatar.com/avatar/HASH"
+                          height="50" />
+
+@code {
+    private Dictionary<string, object> Attributes { get; set; } =
+        new()
+        {
+            { "maxlength", "5" },
+            { "placeholder", "ここに入力してください..." },
+            { "size", "50" }
+        };
+}

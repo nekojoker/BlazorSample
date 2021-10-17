@@ -9,11 +9,13 @@
     <None Remove="Sample\BlazorConponent\" />
     <None Remove="Sample\EventCallback\" />
     <None Remove="Sample\LifeCycle\" />
+    <None Remove="Sample\Attributed\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sample\" />
     <Folder Include="Sample\EditForm\" />
     <Folder Include="Sample\EventCallback\" />
     <Folder Include="Sample\LifeCycle\" />
+    <Folder Include="Sample\AttributeSplatting\" />
   </ItemGroup>
 </Project>
