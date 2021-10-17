@@ -1,0 +1,15 @@
+﻿@page "/cascading"
+
+<h1>カスケーディングパラメーターサンプル</h1>
+
+<CascadingValue Value="@guestMessage" Name="guest">
+    <CascadingValue Value="namedMessage" Name="named">
+        <CascadingChild>
+        </CascadingChild>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    private Message guestMessage = new Message();
+    private Message namedMessage = new Message("nekojoker");
+}
