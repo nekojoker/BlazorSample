@@ -31,10 +31,6 @@
         <div class="col-3">
             <div class="form-group">
                 <label>性別</label>
-                @foreach (GenderType value in Enum.GetValues(typeof(GenderType)))
-                {
-                    value.GetDisplayName();
-                }
                 <InputRadioGroup class="form-control" @bind-Value="@model.Gender">
                     @foreach (GenderType value in Enum.GetValues(typeof(GenderType)))
                     {

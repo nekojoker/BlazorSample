@@ -1,6 +1,6 @@
 ﻿@page "/edit-form3"
 
-<h1>EditFormサンプル（入力中にエラー表示）</h1>
+<h1>EditFormサンプル（入力中の登録ボタン非活性）</h1>
 
 <EditForm EditContext="@editContext" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
@@ -29,10 +29,6 @@
         <div class="col-3">
             <div class="form-group">
                 <label>性別</label>
-                @foreach (GenderType value in Enum.GetValues(typeof(GenderType)))
-                {
-                    value.GetDisplayName();
-                }
                 <InputRadioGroup class="form-control" @bind-Value="@model.Gender">
                     @foreach (GenderType value in Enum.GetValues(typeof(GenderType)))
                     {
