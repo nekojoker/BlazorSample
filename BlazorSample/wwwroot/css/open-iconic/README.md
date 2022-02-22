@@ -112,3 +112,4 @@ All code (including SVG markup) is under the [MIT License](http://opensource.org
 ### Fonts
 
 All fonts are under the [SIL Licensed](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web).
+

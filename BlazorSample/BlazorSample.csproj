@@ -1,25 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Sample\" />
-    <None Remove="Sample\BlazorConponent\" />
-    <None Remove="Sample\EventCallback\" />
-    <None Remove="Sample\LifeCycle\" />
-    <None Remove="Sample\Attributed\" />
-    <None Remove="Sample\Cascading\" />
-    <None Remove="Sample\Render\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sample\" />
-    <Folder Include="Sample\EditForm\" />
-    <Folder Include="Sample\EventCallback\" />
-    <Folder Include="Sample\LifeCycle\" />
-    <Folder Include="Sample\AttributeSplatting\" />
-    <Folder Include="Sample\Cascading\" />
-    <Folder Include="Sample\RenderFragment\" />
   </ItemGroup>
 </Project>
