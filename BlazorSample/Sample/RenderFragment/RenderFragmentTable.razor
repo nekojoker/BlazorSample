@@ -16,14 +16,14 @@
 @code {
     private List<Employee> employees = new()
     {
-        new Employee { Id = 1, Name = "田中 太郎" },
-        new Employee { Id = 2, Name = "高橋 花子" },
-        new Employee { Id = 3, Name = "鈴木 次郎" },
+        new() { Id = 1, Name = "田中 太郎" },
+        new() { Id = 2, Name = "高橋 花子" },
+        new() { Id = 3, Name = "鈴木 次郎" },
     };
 
     private class Employee
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public required int Id { get; set; }
+        public required string Name { get; set; }
     }
 }

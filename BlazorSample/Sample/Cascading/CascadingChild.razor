@@ -1,14 +1,14 @@
 ﻿<h2>カスケーディングパラメーター Child</h2>
 
-<p>GuestMessage：@GuestMessage.GetText()</p>
-<p>NamedMessage：@NamedMessage.GetText()</p>
+<p>GuestMessage：@GuestMessage?.GetText()</p>
+<p>NamedMessage：@NamedMessage?.GetText()</p>
 
 <CascadingGrandChild></CascadingGrandChild>
 
 @code {
     [CascadingParameter(Name = "guest")]
-    protected Message GuestMessage { get; set; }
+    protected Message? GuestMessage { get; set; }
 
     [CascadingParameter(Name = "named")]
-    protected Message NamedMessage { get; set; }
+    protected Message? NamedMessage { get; set; }
 }

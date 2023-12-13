@@ -14,11 +14,11 @@
 
 @code {
     [Parameter]
-    public RenderFragment TableHeader { get; set; }
+    public required RenderFragment TableHeader { get; set; }
 
     [Parameter]
-    public RenderFragment<TItem> RowTemplate { get; set; }
+    public required RenderFragment<TItem> RowTemplate { get; set; }
 
     [Parameter]
-    public IReadOnlyList<TItem> Items { get; set; }
+    public required IReadOnlyList<TItem> Items { get; set; }
 }

@@ -9,15 +9,11 @@
 <p>@message</p>
 
 @code {
-    private string message;
+    private string message = "";
 
     private void ShowMessage1(MouseEventArgs e)
-    {
-        message = "ボタン１が押されました！";
-    }
+        => message = "ボタン１が押されました！";
 
     private void ShowMessage2(int num)
-    {
-        message = $"ボタン２が押されました！ 返り値：{num}";
-    }
-}
+        => message = $"ボタン２が押されました！ 返り値：{num}";
+}s
