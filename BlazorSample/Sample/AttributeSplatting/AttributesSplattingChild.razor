@@ -5,8 +5,8 @@
 @code
 {
     [Parameter]
-    public string src { get; set; }
+    public required string src { get; set; }
 
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> Attributes { get; set; }
+    public required Dictionary<string, object> Attributes { get; set; }
 }

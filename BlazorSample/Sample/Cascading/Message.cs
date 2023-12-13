@@ -1,23 +1,15 @@
-﻿using System;
-namespace BlazorSample.Sample.Cascading
+﻿namespace BlazorSample.Sample.Cascading;
+
+public class Message
 {
-    public class Message
-    {
-        private string _name;
+    private string _name;
 
-        public Message()
-        {
-            _name = "Guest";
-        }
+    public Message()
+        => _name = "Guest";
 
-        public Message(string name)
-        {
-            _name = name;
-        }
+    public Message(string name)
+        => _name = name;
 
-        public string GetText()
-        {
-            return $"Hello {_name}!!";
-        }
-    }
+    public string GetText()
+        => $"Hello {_name}!!";
 }

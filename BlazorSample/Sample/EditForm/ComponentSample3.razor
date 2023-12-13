@@ -87,11 +87,11 @@
 
     private FormModel model = new FormModel();
     private int fileCount;
-    private string resultMessage;
+    private string resultMessage = "";
     private bool isSuccess = false;
 
     private bool formInvalid = true;
-    private EditContext editContext;
+    private EditContext? editContext;
 
     protected override void OnInitialized()
     {
@@ -99,9 +99,9 @@
         editContext.OnFieldChanged += OnFieldChanged;
     }
 
-    private void OnFieldChanged(object sender, FieldChangedEventArgs e)
+    private void OnFieldChanged(object? sender, FieldChangedEventArgs e)
     {
-        formInvalid = !editContext.Validate();
+        formInvalid = !editContext!.Validate();
     }
 
     private void LoadFile(InputFileChangeEventArgs e)

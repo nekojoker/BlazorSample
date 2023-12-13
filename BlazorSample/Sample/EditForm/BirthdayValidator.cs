@@ -1,23 +1,24 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorSample.Sample.EditForm
+namespace BlazorSample.Sample.EditForm;
+
+public class BirthdayValidator : ValidationAttribute
 {
-    public class BirthdayValidator : ValidationAttribute
+    public BirthdayValidator() { }
+    public bool ErrorCheck { get; set; }
+
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
-        public BirthdayValidator() { }
-        public bool ErrorCheck { get; set; }
+        if (!ErrorCheck)
+            return ValidationResult.Success;
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-        {
-            if (!ErrorCheck)
-                return ValidationResult.Success;
+        if (value is null) 
+            return ValidationResult.Success;
 
-            var date = (DateTime)value;
+        var date = (DateTime)value;
 
-            return DateTime.Compare(date, DateTime.Now) > 0
-                ? new ValidationResult("誕生日は本日以前の日付を入力してください。")
-                : ValidationResult.Success;
-        }
+        return DateTime.Compare(date, DateTime.Now) > 0
+            ? new ValidationResult("誕生日は本日以前の日付を入力してください。")
+            : ValidationResult.Success;
     }
 }
